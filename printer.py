@@ -17,5 +17,5 @@ def print_pdf(file_path):
     )
 
 # 印刷したいPDFファイルのパスを指定
-pdf_path = r'C:\Users\hirokikawai\OneDrive - OUMail (Osaka University)\freestep\flasktest\uploads\ddc5ea07-f7ff-4dad-ac97-43733c9a3f7e_final_exam.pdf'
+pdf_path = r'uploads\ddc5ea07-f7ff-4dad-ac97-43733c9a3f7e_final_exam.pdf'
 print_pdf(pdf_path)

@@ -75,18 +75,6 @@ class Problem(db.Model):
     subject = db.relationship('Subject', backref=db.backref('problems', lazy=True))
     unit = db.relationship('Unit', backref=db.backref('problems', lazy=True))
 
-# class Problem(db.Model):
-#     __tablename__ = 'problems'
-#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-#     grade = db.Column(db.String(10), nullable=False)
-#     subject = db.Column(db.String(50), nullable=False)
-#     unit = db.Column(db.String(100), nullable=False)
-#     difficulty = db.Column(db.Enum('0', '1', '2', '3', '4', '5'), nullable=False)
-#     file_path = db.Column(db.String(255), nullable=False)
-#     upload_date = db.Column(db.DateTime, nullable=False, default=db.func.current_timestamp())
-#     title = db.Column(db.String(255), nullable=False)
-#     memo = db.Column(db.Text)
-
 
 
 #grade全件取得api
@@ -269,32 +257,6 @@ def delete_problem(id):
 def get_pdf(problem_id):
     problem = Problem.query.get_or_404(problem_id)
     return send_file(problem.file_path,as_attachment=False)
-    
-
-
-
-# @app.route('/get-pdf',methods=['GET'])
-# def get_pdf():
-#     file_path = r'C:\Users\hirokikawai\Downloads\final_exam.pdf'
-#     return send_file(file_path,as_attachment=False)
-
-
-# @app.route('/upload', methods=['POST'])
-# def upload_file():
-#     if 'file' not in request.files:
-#         return jsonify({'error': 'No file part'}), 400
-
-#     file = request.files['file']
-
-#     if file.filename == '':
-#         return jsonify({'error': 'No selected file'}), 400
-
-#     if file:
-#         # 一意のファイル名を生成
-#         unique_filename = f"{uuid.uuid4()}_{file.filename}"
-#         filepath = os.path.join(UPLOAD_FOLDER, unique_filename)
-#         file.save(filepath)
-#         return jsonify({'message': 'File uploaded successfully', 'filepath': filepath}), 200
     
 
 
